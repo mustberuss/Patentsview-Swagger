@@ -8,9 +8,9 @@
 - Look full spec:
     + JSON https://mustberuss.github.io/Patentsview-API/swagger.json
     + YAML https://mustberuss.github.io/Patentsview-API/swagger.yaml
-- Preview spec version for branch `[branch]`: https://mustberuss.github.io/Patentsview-API/preview/[branch]
 
-**Warning:** All above links are updated only after Travis CI finishes deployment
+**Warning:** The post endpoints don't work in SwaggerUI in most modern browsers. I believe this to be the api provider's bug.
+I have reported it yet here we are.
 
 ## Working on specification
 ### Install
