@@ -3,11 +3,10 @@
 ## Links
 - API: http://www.patentsview.org/api/doc.html
 
-- Documentation(ReDoc): https://mustberuss.github.io/Patentsview-API/
-- SwaggerUI: https://mustberuss.github.io/Patentsview-API/swagger-ui/
+- SwaggerUI: http://patentsview.historicip.com/swagger/
 - Look full spec:
-    + JSON https://mustberuss.github.io/Patentsview-API/swagger.json
-    + YAML https://mustberuss.github.io/Patentsview-API/swagger.yaml
+    + JSON http://patentsview.historicip.com/patentsview.json
+    + YAML http://patentsview.historicip.com/patentsview.yaml
 - My observations on the api: http://patentsview.historicip.com/
 
 **Warning:** The post endpoints don't work in SwaggerUI in most modern browsers. I believe this to be the api provider's bug.
