@@ -15,6 +15,7 @@
     },
     "host": "www.patentsview.org",
     "basePath": "/api",
+    "schemes": ["http"],
     "tags": [{
         "name": "get_endpoints"
     }, {
