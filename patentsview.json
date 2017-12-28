@@ -1,9 +1,10 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "\"PatentsView API\"",
+        "description": "This is my attempt at a reverse engineered Swagger definition for the PatentsView API.  Note that the Try It Out! buttons for the post endpoint do not work. I believe this is an api issue:",
+
         "version": "\"1.0\"",
-        "title": "\"PatentsView API\"",
+        "title": "PatentsView API",
         "termsOfService": "http://www.patentsview.org/api/faqs.html#what-api",
         "contact": {
             "name": "Russ historicip.com "
@@ -15,11 +16,23 @@
     },
     "host": "www.patentsview.org",
     "basePath": "/api",
+    "externalDocs": {
+        "url": "http://patentsview.historicip.com/bugs.htm#10"
+    },
     "schemes": ["http"],
     "tags": [{
-        "name": "get_endpoints"
+        "name": "get_endpoints",
+        "description":"published endpoints that accept get requests"
     }, {
-        "name": "post_endpoints"
+        "name": "post_endpoints",
+        "description":"post endpoints that don't work in Swagger",
+        "externalDocs": {
+           "description": "why swagger posts fail",
+            "url": "http://patentsview.historicip.com/bugs.htm#10"
+         }
+    },{
+        "name": "undocumented",
+        "description":"endpoints discovered in the source code!"
     }],    
     "paths": {
         "/patents/query": {
@@ -522,6 +535,81 @@
                 "summary": "Post a query object to the nber endpoint",
                 "description": "Issue a query to patentsview.",
                 "operationId": "nberPOST",
+                "consumes": ["application/json"],
+                "produces": ["*/*", "application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "CreatePostRequest",
+                    "description": "Query to be issued",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/CreatePostRequest"
+                    }
+                }
+                ],
+                "responses": {
+                    "200":{
+                        "$ref": "#/responses/200"
+                    },
+                    "400":{
+                        "$ref": "#/responses/400"
+                    },
+                    "500":{
+                        "$ref": "#/responses/500"
+                    }                                       
+                 }
+            }             
+        },
+        "/cpc_groups/query": {
+            "get": {
+                "tags": [
+                    "undocumented"
+                ],
+                "summary": "Issue a query to undocumented cpc_groups endpoint, and get a json object back.",
+                "description": "Issue a query to undocumeted cpc_groups endpoint, and get a json object back. Accepts the same f parameters as the cpc_subsections endpoint has with the addition of year_num_patents_for_cpc_group, inventor_num_patents_for_cpc_group and assignee_num_patents_for_cpc_group",
+                "operationId": "cpcgroupsGET",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "*/*",
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/q"
+                    },
+                    {
+                        "$ref": "#/parameters/f"
+                    },
+                    {
+                        "$ref": "#/parameters/o"
+                    },
+                    {
+                        "$ref": "#/parameters/s"
+                    },
+                    {
+                        "$ref": "#/parameters/format"
+                    }
+                ],
+                "responses": {
+                    "200":{
+                        "$ref": "#/responses/200"
+                    },
+                    "400":{
+                        "$ref": "#/responses/400"
+                    },
+                    "500":{
+                        "$ref": "#/responses/500"
+                    }                                       
+                 }
+            },
+            "post": {
+                "tags": ["undocumented"],
+                "summary": "Post a query object to the undocumented cpc_groups endpoint",
+                "description": "Post a query object to the undocumented cpc_groups endpoint.  Accepts the same f parameters as the cpc_subsections endpoint has with the addition of year_num_patents_for_cpc_group, inventor_num_patents_for_cpc_group and assignee_num_patents_for_cpc_group",
+                "operationId": "cpcgroupsPOST",
                 "consumes": ["application/json"],
                 "produces": ["*/*", "application/json"],
                 "parameters": [{
