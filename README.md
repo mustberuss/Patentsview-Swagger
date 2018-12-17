@@ -9,8 +9,7 @@
     + YAML http://patentsview.historicip.com/patentsview.yaml
 - My observations on the api: http://patentsview.historicip.com/
 
-**Warning:** The post endpoints don't work in SwaggerUI in most modern browsers. I believe this to be the api provider's bug.
-I have reported it yet here we are.
+**Warning:** The ultra helpful X-Status-Reason header is not exposed to Swagger-UI. I've opened an issue with the api provider.
 
 ## Working on specification
 ### Install
@@ -23,8 +22,11 @@ I have reported it yet here we are.
 
 1. Run `npm start`
 2. Checkout console output to see where local server is started. You can use all [links](#links) (except `preview`) by replacing https://mustberuss.github.io/Patentsview-API/ with url from the message: `Server started <url>`
+(doesn't work since the api is http: and github.io is https:)
 3. Make changes using your favorite editor or `swagger-editor` (look for URL in console output)
 4. All changes are immediately propagated to your local server, moreover all documentation pages will be automagically refreshed in a browser after each change
 **TIP:** you can open `swagger-editor`, documentation and `swagger-ui` in parallel
 5. Once you finish with the changes you can run tests using: `npm test`
 6. Share you changes with the rest of the world by pushing to GitHub :smile:
+
+This repo was generated using https://github.com/ReDoc-ly/create-openapi-repo#installation
