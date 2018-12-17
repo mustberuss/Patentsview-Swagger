@@ -37,7 +37,6 @@
                     "application/json"
                 ],
                 "produces": [
-                    "*/*",
                     "application/json",
                     "application/xml"
                 ],
@@ -78,7 +77,10 @@
                 "description": "Issue a query to patentsview.",
                 "operationId": "assigneesPOST",
                 "consumes": ["application/json"],
-                "produces": ["*/*", "application/json"],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
                 "parameters": [{
                     "in": "body",
                     "name": "CreatePostRequest",
@@ -116,7 +118,6 @@
                     "application/json"
                 ],
                 "produces": [
-                    "*/*",
                     "application/json",
                     "application/xml"
                 ],
@@ -157,7 +158,10 @@
                 "description": "Issue a query to patentsview.",
                 "operationId": "cpcPOST",
                 "consumes": ["application/json"],
-                "produces": ["*/*", "application/json"],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
                 "parameters": [{
                     "in": "body",
                     "name": "CreatePostRequest",
@@ -195,7 +199,6 @@
                     "application/json"
                 ],
                 "produces": [
-                    "*/*",
                     "application/json",
                     "application/xml"
                 ],
@@ -236,7 +239,10 @@
                 "description": "Issue a query to patentsview.",
                 "operationId": "inventorsPOST",
                 "consumes": ["application/json"],
-                "produces": ["*/*", "application/json"],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
                 "parameters": [{
                     "in": "body",
                     "name": "CreatePostRequest",
@@ -274,7 +280,6 @@
                     "application/json"
                 ],
                 "produces": [
-                    "*/*",
                     "application/json",
                     "application/xml"
                 ],
@@ -315,7 +320,10 @@
                 "description": "Issue a query to patentsview.",
                 "operationId": "locationsPOST",
                 "consumes": ["application/json"],
-                "produces": ["*/*", "application/json"],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
                 "parameters": [{
                     "in": "body",
                     "name": "CreatePostRequest",
@@ -353,7 +361,6 @@
                     "application/json"
                 ],
                 "produces": [
-                    "*/*",
                     "application/json",
                     "application/xml"
                 ],
@@ -394,7 +401,10 @@
                 "description": "Issue a query to patentsview.",
                 "operationId": "nberPOST",
                 "consumes": ["application/json"],
-                "produces": ["*/*", "application/json"],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
                 "parameters": [{
                     "in": "body",
                     "name": "CreatePostRequest",
@@ -432,7 +442,6 @@
                     "application/json"
                 ],
                 "produces": [
-                    "*/*",
                     "application/json",
                     "application/xml"
                 ],
@@ -473,7 +482,10 @@
                 "description": "q is required, f,o,s, format are optional",
                 "operationId": "patentsPOST",
                 "consumes": ["application/json"],
-                "produces": ["*/*", "application/json"],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
                 "parameters": [{
                     "in": "body",
                     "name": "CreatePostRequest",
@@ -511,7 +523,6 @@
                     "application/json"
                 ],
                 "produces": [
-                    "*/*",
                     "application/json",
                     "application/xml"
                 ],
@@ -552,7 +563,10 @@
                 "description": "Issue a query to patentsview.",
                 "operationId": "uspcPOST",
                 "consumes": ["application/json"],
-                "produces": ["*/*", "application/json"],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
                 "parameters": [{
                     "in": "body",
                     "name": "CreatePostRequest",
