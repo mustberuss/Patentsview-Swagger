@@ -4,7 +4,7 @@
         "description": "This is my attempt at a reverse engineered Swagger 2.0 definition for the PatentsView API. Note that the X-Status-Reason response header is not being displayed.  I have opened an issue with the api provider to try to resolve this.",
         "version": "1.0",
         "title": "Patentsview API",
-        "termsOfService": "http://www.patentsview.org/api/faqs.html#what-api",
+        "termsOfService": "https://www.patentsview.org/api/faqs.html#what-api",
         "contact": {
             "name": "Russ at historicip.com "
         },
@@ -15,7 +15,7 @@
     },
     "host": "www.patentsview.org",
     "basePath": "/api",
-    "schemes": ["http"],
+    "schemes": ["https"],
     "tags": [{
         "name": "get_endpoints",
         "description": "published endpoints that accept get requests"
