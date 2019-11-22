@@ -3,10 +3,10 @@
 ## Links
 - API: https://www.patentsview.org/api/doc.html
 
-- SwaggerUI: http://patentsview.historicip.com/swagger/
+- SwaggerUI: https://mustberuss.github.io/Patentsview-Swagger/swagger-ui/
 - Look full spec:
-    + JSON http://patentsview.historicip.com/patentsview.json
-    + YAML http://patentsview.historicip.com/patentsview.yaml
+    + JSON https://mustberuss.github.io/Patentsview-Swagger/patentsview.json
+    + YAML https://mustberuss.github.io/Patentsview-Swagger/patentsview.yaml
 - My observations on the api: http://patentsview.historicip.com/
 
 **Warning:** The ultra helpful X-Status-Reason header is not exposed to Swagger-UI. I've opened an issue with the api provider.
@@ -22,7 +22,6 @@
 
 1. Run `npm start`
 2. Checkout console output to see where local server is started. You can use all [links](#links) (except `preview`) by replacing https://mustberuss.github.io/Patentsview-API/ with url from the message: `Server started <url>`
-(doesn't work since the api is http: and github.io is https:)
 3. Make changes using your favorite editor or `swagger-editor` (look for URL in console output)
 4. All changes are immediately propagated to your local server, moreover all documentation pages will be automagically refreshed in a browser after each change
 **TIP:** you can open `swagger-editor`, documentation and `swagger-ui` in parallel
