@@ -1,7 +1,7 @@
 # Patentsview OpenAPI Specification
 
 ## Links
-- API: http://www.patentsview.org/api/doc.html
+- API: https://www.patentsview.org/api/doc.html
 
 - SwaggerUI: http://patentsview.historicip.com/swagger/
 - Look full spec:
