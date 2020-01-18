@@ -4,8 +4,8 @@ This repo was orginally generated using https://github.com/ReDoc-ly/create-opena
 
 ## Links
 - Swagger-UI 
-    + https://mustberuss.github.io/Patentsview-Swagger/swagger-ui/ Swagger 2
-    + https://mustberuss.github.io/Patentsview-Swagger/swagger-ui/patentsviewswagger3.html OpenAPI/Swagger 3
+    + https://mustberuss.github.io/Patentsview-Swagger/ Swagger 2
+    + https://mustberuss.github.io/Patentsview-Swagger/patentsviewswagger3.html OpenAPI/Swagger 3
 - Patentsview API: https://www.patentsview.org/api/doc.html
 - My observations on the API: http://patentsview.historicip.com/
 - About Swagger-UI and this API in particular: http://patentsview.historicip.com/swagger/articles/
