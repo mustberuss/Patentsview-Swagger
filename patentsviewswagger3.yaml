@@ -1,0 +1,2126 @@
+openapi: 3.0.0
+info:
+  title: Patentsview API
+  description: This is my attempt at a reverse engineered Openapi/Swagger 3.0 definition
+    for the PatentsView API. Note that the X-Status-Reason response header is not
+    being displayed.  I have opened an issue with the api provider to try to resolve
+    this.
+  termsOfService: https://www.patentsview.org/api/faqs.html#what-api
+  contact:
+    name: 'Russ at historicip.com '
+  license:
+    name: '"CC0 1.0 Universal Public Domain Dedication",'
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  version: "1.0"
+servers:
+- url: https://www.patentsview.org/api
+tags:
+- name: get_endpoints
+  description: published endpoints that accept get requests
+- name: post_endpoints
+  description: published endpoints that accept post requests
+paths:
+  /assignees/query:
+    get:
+      tags:
+      - get_endpoints
+      summary: Issue a query to assignees endpoint, and get a json object or xml back.
+      description: Issue a query to assignees endpoint, and get a json object or xml
+        back.
+      operationId: assigneesGET
+      parameters:
+      - name: q
+        in: query
+        description: Query to be issued
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: fields to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: o
+        in: query
+        description: options
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: s
+        in: query
+        description: sort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json|xml defaults to json
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/assigneesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assigneesResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/assigneesResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+    post:
+      tags:
+      - post_endpoints
+      summary: Post a query object to the assignees endpoint
+      description: Issue a query to patentsview.
+      operationId: assigneesPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePostRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/assigneesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assigneesResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+  /cpc_subsections/query:
+    get:
+      tags:
+      - get_endpoints
+      summary: Issue a query to cpc endpoint, and get a json object or xml back.
+      description: Issue a query to cpc endpoint, and get a json object or xml back.
+      operationId: cpcGET
+      parameters:
+      - name: q
+        in: query
+        description: Query to be issued
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: fields to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: o
+        in: query
+        description: options
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: s
+        in: query
+        description: sort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json|xml defaults to json
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/cpc_subsectionsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cpc_subsectionsResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/cpc_subsectionsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+    post:
+      tags:
+      - post_endpoints
+      summary: Post a query object to the cpc endpoint
+      description: Issue a query to patentsview.
+      operationId: cpcPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePostRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/cpc_subsectionsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cpc_subsectionsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+  /inventors/query:
+    get:
+      tags:
+      - get_endpoints
+      summary: Issue a query to inventors endpoint, and get a json object or xml back.
+      description: Issue a query to inventors endpoint, and get a json object or xml
+        back.
+      operationId: inventorsGET
+      parameters:
+      - name: q
+        in: query
+        description: Query to be issued
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: fields to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: o
+        in: query
+        description: options
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: s
+        in: query
+        description: sort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json|xml defaults to json
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/inventorsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inventorsResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/inventorsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+    post:
+      tags:
+      - post_endpoints
+      summary: Post a query object to the inventors endpoint
+      description: Issue a query to patentsview.
+      operationId: inventorsPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePostRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/inventorsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inventorsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+  /locations/query:
+    get:
+      tags:
+      - get_endpoints
+      summary: Issue a query to locations endpoint, and get a json object or xml back.
+      description: Issue a query to locations endpoint, and get a json object or xml
+        back.
+      operationId: locationsGET
+      parameters:
+      - name: q
+        in: query
+        description: Query to be issued
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: fields to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: o
+        in: query
+        description: options
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: s
+        in: query
+        description: sort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json|xml defaults to json
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/locationsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/locationsResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/locationsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+    post:
+      tags:
+      - post_endpoints
+      summary: Post a query object to the locations endpoint
+      description: Issue a query to patentsview.
+      operationId: locationsPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePostRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/locationsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/locationsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+  /nber_subcategories/query:
+    get:
+      tags:
+      - get_endpoints
+      summary: Issue a query to nber endpoint, and get a json object or xml back.
+      description: Issue a query to nber endpoint, and get a json object or xml back.
+      operationId: nberGET
+      parameters:
+      - name: q
+        in: query
+        description: Query to be issued
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: fields to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: o
+        in: query
+        description: options
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: s
+        in: query
+        description: sort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json|xml defaults to json
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/nber_subcategoriesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/nber_subcategoriesResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/nber_subcategoriesResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+    post:
+      tags:
+      - post_endpoints
+      summary: Post a query object to the nber endpoint
+      description: Issue a query to patentsview.
+      operationId: nberPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePostRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/nber_subcategoriesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/nber_subcategoriesResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+  /patents/query:
+    get:
+      tags:
+      - get_endpoints
+      summary: Issue a query to patents endpoint, and get a json object or xml back.
+      description: Issue a query to patents endpoint, and get a json object or xml
+        back.
+      operationId: patentsGET
+      parameters:
+      - name: q
+        in: query
+        description: Query to be issued
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: fields to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: o
+        in: query
+        description: options
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: s
+        in: query
+        description: sort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json|xml defaults to json
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/patentsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patentsResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/patentsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+    post:
+      tags:
+      - post_endpoints
+      summary: Post a query object to the patents endpoint.
+      description: q is required, f,o,s, format are optional
+      operationId: patentsPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePostRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/patentsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/patentsResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+  /uspc_mainclasses/query:
+    get:
+      tags:
+      - get_endpoints
+      summary: Issue a uspc to patent endpoint, and get a json object or xml back.
+      description: Issue a uspc to patent endpoint, and get a json object or xml back.
+      operationId: uspcGET
+      parameters:
+      - name: q
+        in: query
+        description: Query to be issued
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: fields to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: o
+        in: query
+        description: options
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: s
+        in: query
+        description: sort
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: json|xml defaults to json
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/uspc_mainclassesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/uspc_mainclassesResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/uspc_mainclassesResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+    post:
+      tags:
+      - post_endpoints
+      summary: Post a query object to the uspc endpoint
+      description: Issue a query to patentsview.
+      operationId: uspcPOST
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePostRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/uspc_mainclassesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/uspc_mainclassesResponse'
+        "400":
+          description: Returned when the query parameters are not valid, typically
+            either because they are not in valid JSON format, or a specified field
+            or operator is not valid for this endpoint.
+          headers:
+            X-Status-Reason:
+              description: uber helpful error string returned by the api that indicates
+                what it did not like about your request.
+              style: simple
+              explode: false
+              schema:
+                type: string
+        "500":
+          description: Technical difficulties. The api errored out while trying to
+            process your request.
+components:
+  schemas:
+    assigneesResponse:
+      type: object
+      properties:
+        assignees:
+          type: array
+          items:
+            $ref: '#/components/schemas/assigneesResponse_assignees'
+        count:
+          type: integer
+          format: int32
+        total_assignee_count:
+          type: integer
+          format: int32
+    cpc_subsectionsResponse:
+      type: object
+      properties:
+        cpc_subsections:
+          type: array
+          items:
+            $ref: '#/components/schemas/cpc_subsectionsResponse_cpc_subsections'
+        count:
+          type: integer
+          format: int32
+        total_cpc_subsection_count:
+          type: integer
+          format: int32
+    inventorsResponse:
+      type: object
+      properties:
+        inventors:
+          type: array
+          items:
+            $ref: '#/components/schemas/inventorsResponse_inventors'
+        count:
+          type: integer
+          format: int32
+        total_inventor_count:
+          type: integer
+          format: int32
+    locationsResponse:
+      type: object
+      properties:
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/locationsResponse_locations'
+        count:
+          type: integer
+          format: int32
+        total_location_count:
+          type: integer
+          format: int32
+    nber_subcategoriesResponse:
+      type: object
+      properties:
+        nber_subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/nber_subcategoriesResponse_nber_subcategories'
+        count:
+          type: integer
+          format: int32
+        total_nber_subcategory_count:
+          type: integer
+          format: int32
+    patentsResponse:
+      type: object
+      properties:
+        patents:
+          type: array
+          items:
+            $ref: '#/components/schemas/patentsResponse_patents'
+        count:
+          type: integer
+          format: int32
+        total_patent_count:
+          type: integer
+          format: int32
+    uspc_mainclassesResponse:
+      type: object
+      properties:
+        uspc_mainclasses:
+          type: array
+          items:
+            $ref: '#/components/schemas/uspc_mainclassesResponse_uspc_mainclasses'
+        count:
+          type: integer
+          format: int32
+        total_uspc_mainclass_count:
+          type: integer
+          format: int32
+    IPCs:
+      type: array
+      items:
+        $ref: '#/components/schemas/IPCs_inner'
+    application_citations:
+      type: array
+      items:
+        $ref: '#/components/schemas/application_citations_inner'
+    applications:
+      type: array
+      items:
+        $ref: '#/components/schemas/applications_inner'
+    assignees:
+      type: array
+      items:
+        $ref: '#/components/schemas/assignees_inner'
+    cited_patents:
+      type: array
+      items:
+        $ref: '#/components/schemas/cited_patents_inner'
+    citedby_patents:
+      type: array
+      items:
+        $ref: '#/components/schemas/citedby_patents_inner'
+    coinventors:
+      type: array
+      items:
+        $ref: '#/components/schemas/coinventors_inner'
+    cpc_subgroups:
+      type: array
+      items:
+        $ref: '#/components/schemas/cpc_subgroups_inner'
+    cpcs:
+      type: array
+      items:
+        $ref: '#/components/schemas/cpcs_inner'
+    examiners:
+      type: array
+      items:
+        $ref: '#/components/schemas/examiners_inner'
+    foreign_priority:
+      type: array
+      items:
+        $ref: '#/components/schemas/foreign_priority_inner'
+    gov_interests:
+      type: array
+      items:
+        $ref: '#/components/schemas/gov_interests_inner'
+    inventors:
+      type: array
+      items:
+        $ref: '#/components/schemas/inventors_inner'
+    lawyers:
+      type: array
+      items:
+        $ref: '#/components/schemas/lawyers_inner'
+    locations:
+      type: array
+      items:
+        $ref: '#/components/schemas/locations_inner'
+    nbers:
+      type: array
+      items:
+        $ref: '#/components/schemas/nbers_inner'
+    patents:
+      type: array
+      items:
+        $ref: '#/components/schemas/patents_inner'
+    pct_data:
+      type: array
+      items:
+        $ref: '#/components/schemas/pct_data_inner'
+    rawinventors:
+      type: array
+      items:
+        $ref: '#/components/schemas/rawinventors_inner'
+    uspc_subclasses:
+      type: array
+      items:
+        $ref: '#/components/schemas/uspc_subclasses_inner'
+    uspcs:
+      type: array
+      items:
+        $ref: '#/components/schemas/uspcs_inner'
+    wipos:
+      type: array
+      items:
+        $ref: '#/components/schemas/wipos_inner'
+    years:
+      type: array
+      items:
+        $ref: '#/components/schemas/years_inner'
+    CreatePostRequest:
+      required:
+      - q
+      type: object
+      properties:
+        q:
+          type: object
+        f:
+          type: array
+          items:
+            type: string
+        s:
+          type: object
+        o:
+          type: object
+        format:
+          type: string
+          default: json
+          enum:
+          - json
+          - xml
+    assigneesResponse_assignees:
+      type: object
+      properties:
+        assignee_first_name:
+          type: string
+          format: nullable
+        assignee_first_seen_date:
+          type: string
+          format: date
+        assignee_id:
+          type: string
+        assignee_key_id:
+          type: string
+        assignee_last_name:
+          type: string
+          format: nullable
+        assignee_last_seen_date:
+          type: string
+          format: date
+        assignee_lastknown_city:
+          type: string
+        assignee_lastknown_country:
+          type: string
+        assignee_lastknown_latitude:
+          type: string
+        assignee_lastknown_location_id:
+          type: string
+        assignee_lastknown_longitude:
+          type: string
+        assignee_lastknown_state:
+          type: string
+        assignee_organization:
+          type: string
+        assignee_total_num_inventors:
+          type: string
+        assignee_total_num_patents:
+          type: string
+        assignee_type:
+          type: string
+        locations:
+          $ref: '#/components/schemas/locations'
+        patents:
+          $ref: '#/components/schemas/patents'
+        inventors:
+          $ref: '#/components/schemas/inventors'
+        rawinventors:
+          $ref: '#/components/schemas/rawinventors'
+        applications:
+          $ref: '#/components/schemas/applications'
+        IPCs:
+          $ref: '#/components/schemas/IPCs'
+        uspcs:
+          $ref: '#/components/schemas/uspcs'
+        cpcs:
+          $ref: '#/components/schemas/cpcs'
+        nbers:
+          $ref: '#/components/schemas/nbers'
+        years:
+          $ref: '#/components/schemas/years'
+        wipos:
+          $ref: '#/components/schemas/wipos'
+        gov_interests:
+          $ref: '#/components/schemas/gov_interests'
+        lawyers:
+          $ref: '#/components/schemas/lawyers'
+        examiners:
+          $ref: '#/components/schemas/examiners'
+        foreign_priority:
+          $ref: '#/components/schemas/foreign_priority'
+        pct_data:
+          $ref: '#/components/schemas/pct_data'
+    cpc_subsectionsResponse_cpc_subsections:
+      type: object
+      properties:
+        cpc_first_seen_date:
+          type: string
+          format: date
+        cpc_last_seen_date:
+          type: string
+          format: date
+        cpc_subsection_id:
+          type: string
+        cpc_subsection_title:
+          type: string
+        cpc_total_num_assignees:
+          type: string
+        cpc_total_num_inventors:
+          type: string
+        cpc_total_num_patents:
+          type: string
+        cpc_subgroups:
+          $ref: '#/components/schemas/cpc_subgroups'
+        patents:
+          $ref: '#/components/schemas/patents'
+        assignees:
+          $ref: '#/components/schemas/assignees'
+        inventors:
+          $ref: '#/components/schemas/inventors'
+        rawinventors:
+          $ref: '#/components/schemas/rawinventors'
+        applications:
+          $ref: '#/components/schemas/applications'
+        IPCs:
+          $ref: '#/components/schemas/IPCs'
+        uspcs:
+          $ref: '#/components/schemas/uspcs'
+        nbers:
+          $ref: '#/components/schemas/nbers'
+        years:
+          $ref: '#/components/schemas/years'
+        wipos:
+          $ref: '#/components/schemas/wipos'
+        gov_interests:
+          $ref: '#/components/schemas/gov_interests'
+        lawyers:
+          $ref: '#/components/schemas/lawyers'
+        examiners:
+          $ref: '#/components/schemas/examiners'
+        foreign_priority:
+          $ref: '#/components/schemas/foreign_priority'
+        pct_data:
+          $ref: '#/components/schemas/pct_data'
+    inventorsResponse_inventors:
+      type: object
+      properties:
+        inventor_first_name:
+          type: string
+        inventor_first_seen_date:
+          type: string
+          format: date
+        inventor_id:
+          type: string
+        inventor_key_id:
+          type: string
+        inventor_last_name:
+          type: string
+        inventor_last_seen_date:
+          type: string
+          format: date
+        inventor_lastknown_city:
+          type: string
+        inventor_lastknown_country:
+          type: string
+        inventor_lastknown_latitude:
+          type: string
+        inventor_lastknown_location_id:
+          type: string
+        inventor_lastknown_longitude:
+          type: string
+        inventor_lastknown_state:
+          type: string
+        inventor_total_num_patents:
+          type: string
+        rawinventors:
+          $ref: '#/components/schemas/rawinventors'
+        locations:
+          $ref: '#/components/schemas/locations'
+        patents:
+          $ref: '#/components/schemas/patents'
+        assignees:
+          $ref: '#/components/schemas/assignees'
+        applications:
+          $ref: '#/components/schemas/applications'
+        coinventors:
+          $ref: '#/components/schemas/coinventors'
+        IPCs:
+          $ref: '#/components/schemas/IPCs'
+        uspcs:
+          $ref: '#/components/schemas/uspcs'
+        cpcs:
+          $ref: '#/components/schemas/cpcs'
+        nbers:
+          $ref: '#/components/schemas/nbers'
+        years:
+          $ref: '#/components/schemas/years'
+        wipos:
+          $ref: '#/components/schemas/wipos'
+        gov_interests:
+          $ref: '#/components/schemas/gov_interests'
+        lawyers:
+          $ref: '#/components/schemas/lawyers'
+        examiners:
+          $ref: '#/components/schemas/examiners'
+        foreign_priority:
+          $ref: '#/components/schemas/foreign_priority'
+        pct_data:
+          $ref: '#/components/schemas/pct_data'
+    locationsResponse_locations:
+      type: object
+      properties:
+        location_city:
+          type: string
+        location_country:
+          type: string
+        location_county:
+          type: string
+          format: nullable
+        location_county_fips:
+          type: string
+          format: nullable
+        location_id:
+          type: string
+        location_key_id:
+          type: string
+        location_latitude:
+          type: string
+        location_longitude:
+          type: string
+        location_state:
+          type: string
+        location_state_fips:
+          type: string
+          format: nullable
+        location_total_num_assignees:
+          type: string
+        location_total_num_inventors:
+          type: string
+        location_total_num_patents:
+          type: string
+        patents:
+          $ref: '#/components/schemas/patents'
+        inventors:
+          $ref: '#/components/schemas/inventors'
+        rawinventors:
+          $ref: '#/components/schemas/rawinventors'
+        assignees:
+          $ref: '#/components/schemas/assignees'
+        applications:
+          $ref: '#/components/schemas/applications'
+        IPCs:
+          $ref: '#/components/schemas/IPCs'
+        application_citations:
+          $ref: '#/components/schemas/application_citations'
+        cited_patents:
+          $ref: '#/components/schemas/cited_patents'
+        citedby_patents:
+          $ref: '#/components/schemas/citedby_patents'
+        uspcs:
+          $ref: '#/components/schemas/uspcs'
+        cpcs:
+          $ref: '#/components/schemas/cpcs'
+        nbers:
+          $ref: '#/components/schemas/nbers'
+        wipos:
+          $ref: '#/components/schemas/wipos'
+        gov_interests:
+          $ref: '#/components/schemas/gov_interests'
+        lawyers:
+          $ref: '#/components/schemas/lawyers'
+        examiners:
+          $ref: '#/components/schemas/examiners'
+        foreign_priority:
+          $ref: '#/components/schemas/foreign_priority'
+        pct_data:
+          $ref: '#/components/schemas/pct_data'
+    nber_subcategoriesResponse_nber_subcategories:
+      type: object
+      properties:
+        nber_category_id:
+          type: string
+        nber_category_title:
+          type: string
+        nber_first_seen_date:
+          type: string
+          format: date
+        nber_last_seen_date:
+          type: string
+          format: date
+        nber_subcategory_id:
+          type: string
+        nber_subcategory_title:
+          type: string
+        nber_total_num_assignees:
+          type: string
+        nber_total_num_inventors:
+          type: string
+        nber_total_num_patents:
+          type: string
+        patents:
+          $ref: '#/components/schemas/patents'
+        assignees:
+          $ref: '#/components/schemas/assignees'
+        inventors:
+          $ref: '#/components/schemas/inventors'
+        rawinventors:
+          $ref: '#/components/schemas/rawinventors'
+        applications:
+          $ref: '#/components/schemas/applications'
+        IPCs:
+          $ref: '#/components/schemas/IPCs'
+        cpcs:
+          $ref: '#/components/schemas/cpcs'
+        uspcs:
+          $ref: '#/components/schemas/uspcs'
+        years:
+          $ref: '#/components/schemas/years'
+        wipos:
+          $ref: '#/components/schemas/wipos'
+        gov_interests:
+          $ref: '#/components/schemas/gov_interests'
+        lawyers:
+          $ref: '#/components/schemas/lawyers'
+        examiners:
+          $ref: '#/components/schemas/examiners'
+        foreign_priority:
+          $ref: '#/components/schemas/foreign_priority'
+        pct_data:
+          $ref: '#/components/schemas/pct_data'
+    patentsResponse_patents:
+      type: object
+      properties:
+        detail_desc_length:
+          type: string
+        patent_abstract:
+          type: string
+        patent_average_processing_time:
+          type: string
+        patent_date:
+          type: string
+          format: date
+        patent_firstnamed_assignee_city:
+          type: string
+        patent_firstnamed_assignee_country:
+          type: string
+        patent_firstnamed_assignee_id:
+          type: string
+        patent_firstnamed_assignee_latitude:
+          type: string
+        patent_firstnamed_assignee_location_id:
+          type: string
+        patent_firstnamed_assignee_longitude:
+          type: string
+        patent_firstnamed_assignee_state:
+          type: string
+        patent_firstnamed_inventor_city:
+          type: string
+        patent_firstnamed_inventor_country:
+          type: string
+        patent_firstnamed_inventor_id:
+          type: string
+        patent_firstnamed_inventor_latitude:
+          type: string
+        patent_firstnamed_inventor_location_id:
+          type: string
+        patent_firstnamed_inventor_longitude:
+          type: string
+        patent_firstnamed_inventor_state:
+          type: string
+        patent_id:
+          type: string
+        patent_kind:
+          type: string
+        patent_num_cited_by_us_patents:
+          type: string
+        patent_num_claims:
+          type: string
+        patent_num_combined_citations:
+          type: string
+        patent_num_foreign_citations:
+          type: string
+        patent_num_us_application_citations:
+          type: string
+        patent_num_us_patent_citations:
+          type: string
+        patent_number:
+          type: string
+        patent_processing_time:
+          type: string
+        patent_title:
+          type: string
+        patent_type:
+          type: string
+        patent_year:
+          type: string
+        inventors:
+          $ref: '#/components/schemas/inventors'
+        rawinventors:
+          $ref: '#/components/schemas/rawinventors'
+        assignees:
+          $ref: '#/components/schemas/assignees'
+        applications:
+          $ref: '#/components/schemas/applications'
+        IPCs:
+          $ref: '#/components/schemas/IPCs'
+        application_citations:
+          $ref: '#/components/schemas/application_citations'
+        cited_patents:
+          $ref: '#/components/schemas/cited_patents'
+        citedby_patents:
+          $ref: '#/components/schemas/citedby_patents'
+        uspcs:
+          $ref: '#/components/schemas/uspcs'
+        cpcs:
+          $ref: '#/components/schemas/cpcs'
+        nbers:
+          $ref: '#/components/schemas/nbers'
+        wipos:
+          $ref: '#/components/schemas/wipos'
+        gov_interests:
+          $ref: '#/components/schemas/gov_interests'
+        lawyers:
+          $ref: '#/components/schemas/lawyers'
+        examiners:
+          $ref: '#/components/schemas/examiners'
+        foreign_priority:
+          $ref: '#/components/schemas/foreign_priority'
+        pct_data:
+          $ref: '#/components/schemas/pct_data'
+    uspc_mainclassesResponse_uspc_mainclasses:
+      type: object
+      properties:
+        uspc_first_seen_date:
+          type: string
+          format: date
+        uspc_last_seen_date:
+          type: string
+          format: date
+        uspc_mainclass_id:
+          type: string
+        uspc_mainclass_title:
+          type: string
+        uspc_total_num_assignees:
+          type: string
+        uspc_total_num_inventors:
+          type: string
+        uspc_total_num_patents:
+          type: string
+        uspc_subclasses:
+          $ref: '#/components/schemas/uspc_subclasses'
+        patents:
+          $ref: '#/components/schemas/patents'
+        assignees:
+          $ref: '#/components/schemas/assignees'
+        inventors:
+          $ref: '#/components/schemas/inventors'
+        rawinventors:
+          $ref: '#/components/schemas/rawinventors'
+        applications:
+          $ref: '#/components/schemas/applications'
+        IPCs:
+          $ref: '#/components/schemas/IPCs'
+        cpcs:
+          $ref: '#/components/schemas/cpcs'
+        nbers:
+          $ref: '#/components/schemas/nbers'
+        years:
+          $ref: '#/components/schemas/years'
+        wipos:
+          $ref: '#/components/schemas/wipos'
+        gov_interests:
+          $ref: '#/components/schemas/gov_interests'
+        lawyers:
+          $ref: '#/components/schemas/lawyers'
+        examiners:
+          $ref: '#/components/schemas/examiners'
+        foreign_priority:
+          $ref: '#/components/schemas/foreign_priority'
+        pct_data:
+          $ref: '#/components/schemas/pct_data'
+    IPCs_inner:
+      type: object
+      properties:
+        ipc_action_date:
+          type: string
+          format: nullable
+        ipc_class:
+          type: string
+        ipc_classification_data_source:
+          type: string
+        ipc_classification_value:
+          type: string
+        ipc_first_seen_date:
+          type: string
+          format: date
+        ipc_last_seen_date:
+          type: string
+          format: date
+        ipc_main_group:
+          type: string
+        ipc_section:
+          type: string
+        ipc_subclass:
+          type: string
+        ipc_subgroup:
+          type: string
+        ipc_symbol_position:
+          type: string
+        ipc_total_num_assignees:
+          type: string
+        ipc_total_num_inventors:
+          type: string
+        ipc_version_indicator:
+          type: string
+          format: nullable
+    application_citations_inner:
+      type: object
+      properties:
+        appcit_app_number:
+          type: string
+          format: nullable
+        appcit_category:
+          type: string
+          format: nullable
+        appcit_date:
+          type: string
+          format: nullable
+        appcit_kind:
+          type: string
+          format: nullable
+        appcit_sequence:
+          type: string
+          format: nullable
+    applications_inner:
+      type: object
+      properties:
+        app_country:
+          type: string
+        app_date:
+          type: string
+          format: date
+        app_number:
+          type: string
+        app_type:
+          type: string
+        app_id:
+          type: string
+    assignees_inner:
+      type: object
+      properties:
+        assignee_city:
+          type: string
+        assignee_country:
+          type: string
+        assignee_county:
+          type: string
+          format: nullable
+        assignee_county_fips:
+          type: string
+          format: nullable
+        assignee_first_name:
+          type: string
+          format: nullable
+        assignee_first_seen_date:
+          type: string
+          format: date
+        assignee_id:
+          type: string
+        assignee_last_name:
+          type: string
+          format: nullable
+        assignee_last_seen_date:
+          type: string
+          format: date
+        assignee_lastknown_city:
+          type: string
+        assignee_lastknown_country:
+          type: string
+        assignee_lastknown_latitude:
+          type: string
+        assignee_lastknown_location_id:
+          type: string
+        assignee_lastknown_longitude:
+          type: string
+        assignee_lastknown_state:
+          type: string
+        assignee_latitude:
+          type: string
+        assignee_location_id:
+          type: string
+        assignee_longitude:
+          type: string
+        assignee_num_patents_for_uspc_mainclass:
+          type: string
+        assignee_organization:
+          type: string
+        assignee_state:
+          type: string
+        assignee_state_fips:
+          type: string
+          format: nullable
+        assignee_total_num_inventors:
+          type: string
+        assignee_total_num_patents:
+          type: string
+        assignee_type:
+          type: string
+        assignee_key_id:
+          type: string
+    cited_patents_inner:
+      type: object
+      properties:
+        cited_patent_category:
+          type: string
+          format: nullable
+        cited_patent_date:
+          type: string
+          format: date
+        cited_patent_kind:
+          type: string
+        cited_patent_number:
+          type: string
+        cited_patent_sequence:
+          type: string
+        cited_patent_title:
+          type: string
+    citedby_patents_inner:
+      type: object
+      properties:
+        citedby_patent_category:
+          type: string
+          format: nullable
+        citedby_patent_date:
+          type: string
+          format: date
+        citedby_patent_kind:
+          type: string
+        citedby_patent_number:
+          type: string
+        citedby_patent_title:
+          type: string
+    coinventors_inner:
+      type: object
+      properties:
+        coinventor_city:
+          type: string
+        coinventor_country:
+          type: string
+        coinventor_first_name:
+          type: string
+        coinventor_first_seen_date:
+          type: string
+          format: date
+        coinventor_id:
+          type: string
+        coinventor_last_name:
+          type: string
+        coinventor_last_seen_date:
+          type: string
+          format: date
+        coinventor_lastknown_city:
+          type: string
+        coinventor_lastknown_country:
+          type: string
+        coinventor_lastknown_latitude:
+          type: string
+        coinventor_lastknown_location_id:
+          type: string
+        coinventor_lastknown_longitude:
+          type: string
+        coinventor_lastknown_state:
+          type: string
+          format: nullable
+        coinventor_latitude:
+          type: string
+        coinventor_location_id:
+          type: string
+        coinventor_longitude:
+          type: string
+        coinventor_num_patents_for_inventor:
+          type: string
+        coinventor_total_num_patents:
+          type: string
+        coinventor_key_id:
+          type: string
+    cpc_subgroups_inner:
+      type: object
+      properties:
+        cpc_category:
+          type: string
+        cpc_group_id:
+          type: string
+        cpc_group_title:
+          type: string
+        cpc_section_id:
+          type: string
+        cpc_subgroup_id:
+          type: string
+        cpc_subgroup_title:
+          type: string
+    cpcs_inner:
+      type: object
+      properties:
+        cpc_category:
+          type: string
+        cpc_first_seen_date:
+          type: string
+          format: date
+        cpc_group_id:
+          type: string
+        cpc_group_title:
+          type: string
+        cpc_last_seen_date:
+          type: string
+          format: date
+        cpc_section_id:
+          type: string
+        cpc_subgroup_id:
+          type: string
+        cpc_subgroup_title:
+          type: string
+        cpc_subsection_id:
+          type: string
+        cpc_subsection_title:
+          type: string
+        cpc_total_num_assignees:
+          type: string
+        cpc_total_num_inventors:
+          type: string
+        cpc_total_num_patents:
+          type: string
+    examiners_inner:
+      type: object
+      properties:
+        examiner_first_name:
+          type: string
+        examiner_group:
+          type: string
+          format: nullable
+        examiner_id:
+          type: string
+        examiner_last_name:
+          type: string
+        examiner_role:
+          type: string
+    foreign_priority_inner:
+      type: object
+      properties:
+        forprior_country:
+          type: string
+        forprior_date:
+          type: string
+          format: date
+        forprior_docnumber:
+          type: string
+        forprior_kind:
+          type: string
+          format: nullable
+        forprior_sequence:
+          type: string
+    gov_interests_inner:
+      type: object
+      properties:
+        govint_contract_award_number:
+          type: string
+          format: nullable
+        govint_org_id:
+          type: string
+          format: nullable
+        govint_org_level_one:
+          type: string
+          format: nullable
+        govint_org_level_three:
+          type: string
+          format: nullable
+        govint_org_level_two:
+          type: string
+          format: nullable
+        govint_org_name:
+          type: string
+          format: nullable
+        govint_raw_statement:
+          type: string
+          format: nullable
+    inventors_inner:
+      type: object
+      properties:
+        inventor_city:
+          type: string
+        inventor_country:
+          type: string
+        inventor_county:
+          type: string
+          format: nullable
+        inventor_county_fips:
+          type: string
+          format: nullable
+        inventor_first_name:
+          type: string
+        inventor_first_seen_date:
+          type: string
+          format: date
+        inventor_id:
+          type: string
+        inventor_last_name:
+          type: string
+        inventor_last_seen_date:
+          type: string
+          format: date
+        inventor_lastknown_city:
+          type: string
+        inventor_lastknown_country:
+          type: string
+        inventor_lastknown_latitude:
+          type: string
+        inventor_lastknown_location_id:
+          type: string
+        inventor_lastknown_longitude:
+          type: string
+        inventor_lastknown_state:
+          type: string
+        inventor_latitude:
+          type: string
+        inventor_location_id:
+          type: string
+        inventor_longitude:
+          type: string
+        inventor_num_patents_for_uspc_mainclass:
+          type: string
+        inventor_state:
+          type: string
+        inventor_state_fips:
+          type: string
+          format: nullable
+        inventor_total_num_patents:
+          type: string
+        inventor_key_id:
+          type: string
+    lawyers_inner:
+      type: object
+      properties:
+        lawyer_first_name:
+          type: string
+          format: nullable
+        lawyer_first_seen_date:
+          type: string
+          format: date
+        lawyer_id:
+          type: string
+        lawyer_last_name:
+          type: string
+          format: nullable
+        lawyer_last_seen_date:
+          type: string
+          format: date
+        lawyer_organization:
+          type: string
+        lawyer_sequence:
+          type: string
+        lawyer_total_num_assignees:
+          type: string
+        lawyer_total_num_inventors:
+          type: string
+        lawyer_total_num_patents:
+          type: string
+    locations_inner:
+      type: object
+      properties:
+        location_city:
+          type: string
+        location_country:
+          type: string
+        location_county:
+          type: string
+          format: nullable
+        location_county_fips:
+          type: string
+          format: nullable
+        location_id:
+          type: string
+        location_latitude:
+          type: string
+        location_longitude:
+          type: string
+        location_state:
+          type: string
+        location_state_fips:
+          type: string
+          format: nullable
+        location_key_id:
+          type: string
+    nbers_inner:
+      type: object
+      properties:
+        nber_category_id:
+          type: string
+        nber_category_title:
+          type: string
+        nber_first_seen_date:
+          type: string
+          format: date
+        nber_last_seen_date:
+          type: string
+          format: date
+        nber_subcategory_id:
+          type: string
+        nber_subcategory_title:
+          type: string
+        nber_total_num_assignees:
+          type: string
+        nber_total_num_inventors:
+          type: string
+        nber_total_num_patents:
+          type: string
+    patents_inner:
+      type: object
+      properties:
+        detail_desc_length:
+          type: string
+        patent_abstract:
+          type: string
+        patent_date:
+          type: string
+          format: date
+        patent_firstnamed_assignee_city:
+          type: string
+        patent_firstnamed_assignee_country:
+          type: string
+        patent_firstnamed_assignee_id:
+          type: string
+        patent_firstnamed_assignee_latitude:
+          type: string
+        patent_firstnamed_assignee_location_id:
+          type: string
+        patent_firstnamed_assignee_longitude:
+          type: string
+        patent_firstnamed_assignee_state:
+          type: string
+        patent_firstnamed_inventor_city:
+          type: string
+        patent_firstnamed_inventor_country:
+          type: string
+        patent_firstnamed_inventor_id:
+          type: string
+        patent_firstnamed_inventor_latitude:
+          type: string
+        patent_firstnamed_inventor_location_id:
+          type: string
+        patent_firstnamed_inventor_longitude:
+          type: string
+        patent_firstnamed_inventor_state:
+          type: string
+        patent_id:
+          type: string
+        patent_kind:
+          type: string
+        patent_num_cited_by_us_patents:
+          type: string
+        patent_num_claims:
+          type: string
+        patent_num_combined_citations:
+          type: string
+        patent_num_foreign_citations:
+          type: string
+        patent_num_us_application_citations:
+          type: string
+        patent_num_us_patent_citations:
+          type: string
+        patent_number:
+          type: string
+        patent_title:
+          type: string
+        patent_type:
+          type: string
+    pct_data_inner:
+      type: object
+      properties:
+        pct_102_date:
+          type: string
+          format: nullable
+        pct_371_date:
+          type: string
+          format: nullable
+        pct_date:
+          type: string
+          format: nullable
+        pct_docnumber:
+          type: string
+          format: nullable
+        pct_doctype:
+          type: string
+          format: nullable
+        pct_kind:
+          type: string
+          format: nullable
+    rawinventors_inner:
+      type: object
+      properties:
+        rawinventor_first_name:
+          type: string
+        rawinventor_last_name:
+          type: string
+    uspc_subclasses_inner:
+      type: object
+      properties:
+        uspc_subclass_id:
+          type: string
+        uspc_subclass_title:
+          type: string
+    uspcs_inner:
+      type: object
+      properties:
+        uspc_first_seen_date:
+          type: string
+          format: date
+        uspc_last_seen_date:
+          type: string
+          format: date
+        uspc_mainclass_id:
+          type: string
+        uspc_mainclass_title:
+          type: string
+        uspc_sequence:
+          type: string
+        uspc_subclass_id:
+          type: string
+        uspc_subclass_title:
+          type: string
+        uspc_total_num_assignees:
+          type: string
+        uspc_total_num_inventors:
+          type: string
+        uspc_total_num_patents:
+          type: string
+    wipos_inner:
+      type: object
+      properties:
+        wipo_field_id:
+          type: string
+        wipo_field_title:
+          type: string
+        wipo_sector_title:
+          type: string
+        wipo_sequence:
+          type: string
+    years_inner:
+      type: object
+      properties:
+        year_id:
+          type: string
+        year_num_patents_for_uspc_mainclass:
+          type: string
+  responses:
+    "200":
+      description: OK
+      content:
+        '*/*':
+          schema:
+            type: string
+    "400":
+      description: Returned when the query parameters are not valid, typically either
+        because they are not in valid JSON format, or a specified field or operator
+        is not valid for this endpoint.
+      headers:
+        X-Status-Reason:
+          description: uber helpful error string returned by the api that indicates
+            what it did not like about your request.
+          style: simple
+          explode: false
+          schema:
+            type: string
+    "500":
+      description: Technical difficulties. The api errored out while trying to process
+        your request.
+  parameters:
+    q:
+      name: q
+      in: query
+      description: Query to be issued
+      required: true
+      style: form
+      explode: true
+      schema:
+        type: string
+    f:
+      name: f
+      in: query
+      description: fields to return
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    o:
+      name: o
+      in: query
+      description: options
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    s:
+      name: s
+      in: query
+      description: sort
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+    format:
+      name: format
+      in: query
+      description: json|xml defaults to json
+      required: false
+      style: form
+      explode: true
+      schema:
+        type: string
+        enum:
+        - json
+        - xml
+  requestBodies:
+    CreatePostRequest:
+      description: Query to be issued
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePostRequest'
+      required: true
