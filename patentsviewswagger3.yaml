@@ -13,7 +13,7 @@ info:
     url: https://creativecommons.org/publicdomain/zero/1.0/
   version: "1.0"
 servers:
-- url: https://www.patentsview.org/api
+- url: http://www.patentsview.org/
 tags:
 - name: get_endpoints
   description: published endpoints that accept get requests

@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "servers": [
     {
-      "url": "https://www.patentsview.org/api"
+      "url": "https://api.patentsview.org/"
     }
   ],
   "info": {
