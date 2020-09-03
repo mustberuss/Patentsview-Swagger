@@ -13,8 +13,7 @@
             "url": "https://creativecommons.org/publicdomain/zero/1.0/"
         }
     },
-    "host": "www.patentsview.org",
-    "basePath": "/api",
+    "host": "api.patentsview.org",
     "schemes": ["https"],
     "tags": [{
         "name": "get_endpoints",

@@ -9,8 +9,7 @@ info:
   license:
     name: '"CC0 1.0 Universal Public Domain Dedication",'
     url: 'https://creativecommons.org/publicdomain/zero/1.0/'
-host: www.patentsview.org
-basePath: /api
+host: api.patentsview.org
 schemes:
   - https
 tags:
