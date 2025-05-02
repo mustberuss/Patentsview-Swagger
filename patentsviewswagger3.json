@@ -6,7 +6,7 @@
     }
   ],
   "info": {
-    "description": "This is my attempt at a reverse engineered Openapi/Swagger 3.0 definition for the PatentsView API. Note that the X-Status-Reason response header is not being displayed.  I have opened an issue with the api provider to try to resolve this.",
+    "description": "*2025-05-01 update*: The Patentsview API team has shutdown the original version of the API so my Swagger UI pages no longer work.  They have provided their own [Swagger UI page](https://search.patentsview.org/swagger-ui) for the new version of the API. **Important note:** An [API key](https://patentsview-support.atlassian.net/servicedesk/customer/portal/1/group/1/create/18) is now required.\n\n\nThis was my attempt at a reverse engineered Openapi/Swagger 3.0 definition for the PatentsView API.",
     "version": "1.0",
     "title": "Patentsview API",
     "termsOfService": "https://www.patentsview.org/api/faqs.html#what-api",
